@@ -11,25 +11,9 @@ import Home from "@/app/page";
 export default function Header() {
   return (
     <header className="">
-      <div className="flex items-center">
-        <SignedOut>
-          <SignInButton />
-        </SignedOut>
-        <SignedIn />
-        <UserButton />
-        <SignedIn />
-      </div>
       <div className="">
-        <h1>Welcome to Music blog</h1>
-        <h2>So you have hell is full of musical amateurs!</h2>
-      </div>
-      <div className="flex items-center">
-        <Image
-          src="/public/Theraphy.png"
-          alt="Backgroung Image"
-          height={300}
-          width={300}
-        />
+        <h1>Welcome to the Music blog</h1>
+        <h2>So I have to say hell is full of musical amateurs!</h2>
       </div>
     </header>
   );

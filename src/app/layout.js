@@ -11,6 +11,9 @@ import Home from "./page";
 import Profile from "./posts/page";
 import ProfileForm from "./components/ProfileForm";
 import { auth } from "@clerk/nextjs/server";
+import Image from "next/image";
+import Header from "./components/header";
+import Footer from "./components/footer";
 
 export default async function RootLayout({ children }) {
   const { userId } = auth();
@@ -18,11 +21,11 @@ export default async function RootLayout({ children }) {
   const profiles = await db.query(
     `SELECT * FROM profiles WHERE clerk_id = '${userId}'`
   );
-  if (profiles.rowCount === 0 && userId == null) {
-    await db.query(`INSERT INTO profiles (clerk_id) VALUES {'${userId}}'`);
+  if (profiles.rowCount === 0 && userId !== null) {
+    await db.query(`INSERT INTO profiles (clerk_id) VALUES ('${userId}')`);
   }
 
-  const hasUsername = profiles.row[0]?.username == null ? true : false;
+  const hasUsername = profiles.rows[0]?.username !== null ? true : false;
 
   return (
     <ClerkProvider>
@@ -40,8 +43,10 @@ export default async function RootLayout({ children }) {
             <SignedOut>{children}</SignedOut>
 
             <SignedIn>
+              <Header />
               {hasUsername && children}
-              {hasUsername && <ProfileForm />}
+              {!hasUsername && <ProfileForm />}
+              <Footer />
             </SignedIn>
           </main>
         </body>

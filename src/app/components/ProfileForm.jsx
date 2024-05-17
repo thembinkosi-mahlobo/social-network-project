@@ -10,7 +10,7 @@ export default function ProfileForm() {
     const bio = formData.get("bio");
 
     await db.query(
-      `UPDATE profiles SET username = '${username}', bio='${bio}' WHERE clerk_id ='${userID}'`
+      `UPDATE profiles SET username = '${username}', bio='${bio}' WHERE clerk_id ='${userId}'`
     );
     revalidatePath("/");
   }
