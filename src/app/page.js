@@ -11,7 +11,7 @@ import { db } from "@/lib/db";
 // import { sql } from "vercel/postgres";
 
 export default async function Home() {
-  const musicposts = await db.query(`SELECT FROM musicposts`);
+  const musicposts = await db.query(`SELECT * FROM musicposts`);
   return (
     <main>
       <SignedOut>
@@ -48,12 +48,12 @@ export default async function Home() {
             <h2>MusicPosts</h2>
             {musicposts.rows.map((musicpost) => {
               return (
-                <div key={musicposts.id} className="MusicPost">
-                  <h3>{musicposts.artist}</h3>
-                  <p>{musicposts.content}</p>
+                <div key={musicpost.id} className="MusicPost">
+                  <h3>{musicpost.artist}</h3>
+                  <p>{musicpost.content}</p>
                   <Image
-                    src={`/${musicposts.album}.png`}
-                    alt={musicposts.album}
+                    src={`/${musicpost.album}.png`}
+                    alt={musicpost.album}
                     width={300}
                     height={200}
                   />
