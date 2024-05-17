@@ -34,3 +34,15 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+🎯 Use Clerk.com to set up user signup and login.
+
+🎯 Use the Clerk userId to associate posts with a user.
+
+🎯 Enable each user to create a profile associated with their userId, and a form to input their biography and location data, etc. with a URL similar to /user/[userId].
+
+🎯 Enable users to create posts associated with the userId, and display those posts on the user's profile page
+
+🎯 Show a 404 error if a user profile doesn't exist
+
+🎯 Use at least 1 Radix UI Primitive or similar

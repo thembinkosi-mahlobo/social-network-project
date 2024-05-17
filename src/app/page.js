@@ -6,11 +6,12 @@ import Header from "@/app/components/header";
 import Footer from "@/app/components/footer";
 import { SignedOut } from "@clerk/nextjs";
 import { SignedIn } from "@clerk/nextjs";
+import { db } from "@/lib/db";
 
 // import { sql } from "vercel/postgres";
 
 export default async function Home() {
-  // const MusicPost = await sql`SELECT FROM MusicPost`;
+  const musicposts = await db.query(`SELECT FROM musicposts`);
   return (
     <main>
       <SignedOut>
@@ -43,17 +44,16 @@ export default async function Home() {
       </SignedOut>
       <SignedIn>
         <div>
-          {" "}
           <div className="">
             <h2>MusicPosts</h2>
-            {MusicPosts.rows.map((posts) => {
+            {musicposts.rows.map((musicpost) => {
               return (
-                <div key={MusicPosts.id} className="MusicPost">
-                  <h3>{MusicPosts.artist}</h3>
-                  <p>{MusicPosts.content}</p>
+                <div key={musicposts.id} className="MusicPost">
+                  <h3>{musicposts.artist}</h3>
+                  <p>{musicposts.content}</p>
                   <Image
-                    src={`/${MusicPosts.album}.png`}
-                    alt={MusicPosts.album}
+                    src={`/${musicposts.album}.png`}
+                    alt={musicposts.album}
                     width={300}
                     height={200}
                   />
