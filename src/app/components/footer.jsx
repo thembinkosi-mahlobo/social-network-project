@@ -4,7 +4,7 @@ import Header from "@/app/components/header";
 export default function Footer() {
   return (
     <footer>
-      <div className="skew skew-top mr-for-radius">
+      <div className="">
         <div
           className="position:absolute;
         bottom: 30px;
